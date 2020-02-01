@@ -28,7 +28,7 @@ RUN apk update && \
     zlib-dev \
     giflib-dev
 
-ENV RAILS_ENV=development NODE_ENV=development BUNDLE_PATH=/bundle
+ENV NODE_ENV=development BUNDLE_PATH=/bundle
 
 WORKDIR /app
 
