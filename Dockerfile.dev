@@ -17,6 +17,7 @@ RUN apk update && \
     build-base \
     ca-certificates \
     cairo-dev \
+    coreutils \
     curl \
     curl-dev \
     giflib-dev \
