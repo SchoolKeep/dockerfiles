@@ -12,12 +12,11 @@ jobs:
       - run:
           name: Build image
           command: |
-            docker build \
-              -t base-dev:latest \
-              -t base-dev:$CIRCLE_SHA1 \
+            docker build -f Dockerfile.dev \
               --build-arg BUILD_DATE="$(date '+%Y-%m-%dT%H:%M:%S')" \
               --build-arg REVISION_SHA=$CIRCLE_SHA1 \
-              -f Dockerfile.dev
+              -t base-dev:latest \
+              -t base-dev:$CIRCLE_SHA1 \
               .
       - run:
           name: Push image to Docker Hub
