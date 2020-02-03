@@ -15,7 +15,7 @@ jobs:
             docker build \
               -t base-dev:latest \
               -t base-dev:$CIRCLE_SHA1 \
-              --build-arg BUILD_DATE=$(date '+%d/%m/%Y %H:%M:%S') \
+              --build-arg BUILD_DATE="$(date '+%Y-%m-%dT%H:%M:%S')" \
               --build-arg REVISION_SHA=$CIRCLE_SHA1 \
               -f Dockerfile.dev
               .
