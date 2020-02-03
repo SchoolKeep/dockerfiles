@@ -15,8 +15,8 @@ jobs:
             docker build -f Dockerfile.dev \
               --build-arg BUILD_DATE="$(date '+%Y-%m-%dT%H:%M:%S')" \
               --build-arg REVISION_SHA=$CIRCLE_SHA1 \
-              -t northpass/base-dev:latest \
-              -t northpass/base-dev:$CIRCLE_SHA1 \
+              -t "northpass/base-dev:latest" \
+              -t "northpass/base-dev:$CIRCLE_SHA1" \
               .
       - run:
           name: Push image to Docker Hub
