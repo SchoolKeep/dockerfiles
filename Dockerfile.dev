@@ -13,20 +13,22 @@ COPY --from=node:10.15.3-alpine / /
 RUN apk update && \
     apk upgrade && \
     apk add --update --no-cache \
-    git \
-    openssh \
     build-base \
-    postgresql-dev \
-    yaml-dev \
-    zlib-dev \
     ca-certificates \
-    tzdata \
-    python \
+    cairo-dev \
     curl \
-    postgresql-client \
     curl-dev \
-    zlib-dev \
-    giflib-dev
+    giflib-dev \
+    git \
+    jpeg-dev \
+    openssh \
+    pango-dev \
+    postgresql-client \
+    postgresql-dev \
+    python \
+    tzdata \
+    yaml-dev \
+    zlib-dev
 
 ENV NODE_ENV=development BUNDLE_PATH=/bundle
 
