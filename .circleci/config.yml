@@ -22,7 +22,7 @@ jobs:
           name: Push image to Docker Hub
           command: |
             echo "$DOCKER_HUB_PASS" | docker login --username "$DOCKER_HUB_LOGIN" --password-stdin
-            docker push northpass/base-dev:latest
+            docker push northpass/base-dev
 
 workflows:
   build_and_push:
