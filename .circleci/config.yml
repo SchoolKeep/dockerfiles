@@ -15,14 +15,14 @@ jobs:
             docker build -f Dockerfile.dev \
               --build-arg BUILD_DATE="$(date '+%Y-%m-%dT%H:%M:%S')" \
               --build-arg REVISION_SHA=$CIRCLE_SHA1 \
-              -t base-dev:latest \
-              -t base-dev:$CIRCLE_SHA1 \
+              -t northpass/base-dev:latest \
+              -t northpass/base-dev:$CIRCLE_SHA1 \
               .
       - run:
           name: Push image to Docker Hub
           command: |
             echo "$DOCKER_HUB_PASS" | docker login --username "$DOCKER_HUB_LOGIN" --password-stdin
-            docker push base-dev:latest
+            docker push northpass/base-dev:latest
 
 workflows:
   build_and_push:
