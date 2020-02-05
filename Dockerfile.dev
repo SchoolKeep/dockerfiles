@@ -30,6 +30,7 @@ RUN apk update && \
     python \
     tzdata \
     yaml-dev \
+    xvfb \
     zlib-dev
 
 ENV NODE_ENV=development DOCKERIZE_VERSION=v0.6.1
