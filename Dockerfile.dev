@@ -23,6 +23,7 @@ RUN apk update && \
     giflib-dev \
     git \
     jpeg-dev \
+    libc6-compat \
     openssh \
     pango-dev \
     postgresql-client \
