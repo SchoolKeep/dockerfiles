@@ -25,6 +25,7 @@ RUN apk update && \
     jpeg-dev \
     libc6-compat \
     openssh \
+    openssl \
     pango-dev \
     postgresql-client \
     postgresql-dev \
