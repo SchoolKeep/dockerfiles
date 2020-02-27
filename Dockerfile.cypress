@@ -1,5 +1,16 @@
 FROM cypress/included:3.8.3
 
+ARG BUILD_DATE
+ARG REVISION_SHA
+
+LABEL org.opencontainers.image.created=$BUILD_DATE \
+  org.opencontainers.image.authors="dev@northpass.com" \
+  org.opencontainers.image.source="https://github.com/SchoolKeep/dockerfiles" \
+  org.opencontainers.image.revision=$REVISION_SHA \
+  org.opencontainers.image.vendor="Northpass" \
+  org.opencontainers.image.title="Northpass Development Base Image" \
+  org.opencontainers.image.description="Base image used to run Cypress tests"
+
 WORKDIR /app
 
 ENV DOCKERIZE_VERSION=v0.6.1
