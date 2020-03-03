@@ -23,6 +23,7 @@ RUN apk update && \
     coreutils \
     curl \
     curl-dev \
+    gcompat \
     giflib-dev \
     git \
     jpeg-dev \
