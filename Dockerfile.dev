@@ -27,6 +27,7 @@ RUN apk update && \
     giflib-dev \
     git \
     jpeg-dev \
+    less \
     libc6-compat \
     openssh \
     openssl \
