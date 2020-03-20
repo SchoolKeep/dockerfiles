@@ -29,6 +29,7 @@ RUN apk update && \
     jpeg-dev \
     less \
     libc6-compat \
+    ncurses \
     openssh \
     openssl \
     pango-dev \
