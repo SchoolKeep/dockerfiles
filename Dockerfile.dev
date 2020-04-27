@@ -14,42 +14,43 @@ LABEL org.opencontainers.image.created=$BUILD_DATE \
 COPY --from=node:10.15.3-alpine / /
 
 RUN apk update && \
-    apk upgrade && \
-    apk add --update --no-cache \
-    bash \
-    build-base \
-    ca-certificates \
-    cairo-dev \
-    coreutils \
-    curl \
-    curl-dev \
-    gcompat \
-    giflib-dev \
-    git \
-    jpeg-dev \
-    less \
-    libc6-compat \
-    ncurses \
-    openssh \
-    openssl \
-    pango-dev \
-    postgresql-client \
-    postgresql-dev \
-    python \
-    tzdata \
-    yaml-dev \
-    xvfb \
-    zlib-dev
+  apk upgrade && \
+  apk add --update --no-cache \
+  bash \
+  build-base \
+  ca-certificates \
+  cairo-dev \
+  coreutils \
+  curl \
+  curl-dev \
+  gcompat \
+  giflib-dev \
+  git \
+  jpeg-dev \
+  less \
+  libc6-compat \
+  ncurses \
+  openssh \
+  openssl \
+  pango-dev \
+  postgresql-client \
+  postgresql-dev \
+  python \
+  tzdata \
+  yaml-dev \
+  xvfb \
+  zlib-dev \
+  libsass-dev
 
 ENV NODE_ENV=development DOCKERIZE_VERSION=v0.6.1
 RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-    && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-    && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+  && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+  && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 WORKDIR /app
 
 RUN mkdir -p -m 0600 ~/.ssh && \
-      ssh-keyscan github.com >> ~/.ssh/known_hosts && \
-      gem install bundler -v=2.1.4 && \
-      bundle config --global --jobs $(nproc) && \
-      npm install -g yarn
+  ssh-keyscan github.com >> ~/.ssh/known_hosts && \
+  gem install bundler -v=2.1.4 && \
+  bundle config --global --jobs $(nproc) && \
+  npm install -g yarn
