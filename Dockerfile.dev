@@ -51,5 +51,6 @@ WORKDIR /app
 RUN mkdir -p -m 0600 ~/.ssh && \
       ssh-keyscan github.com >> ~/.ssh/known_hosts && \
       gem install bundler -v=2.1.4 && \
+      bundle config --global force_ruby_platform true && \
       bundle config --global --jobs $(nproc) && \
       npm install -g yarn
