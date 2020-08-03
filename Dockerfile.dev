@@ -27,6 +27,7 @@ RUN apk update && \
     git \
     jpeg-dev \
     less \
+    libx11-dev=1.6.9-r0 \
     ncurses \
     openssh \
     openssl \
