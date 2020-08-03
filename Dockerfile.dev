@@ -11,7 +11,7 @@ LABEL org.opencontainers.image.created=$BUILD_DATE \
   org.opencontainers.image.title="Northpass Development Base Image" \
   org.opencontainers.image.description="Base image used to run Northpass in development and test envs"
 
-COPY --from=node:10.15.3-alpine / /
+COPY --from=node:10.22.0-alpine3.11 / /
 
 RUN apk update && \
     apk upgrade && \
@@ -27,7 +27,6 @@ RUN apk update && \
     git \
     jpeg-dev \
     less \
-    libx11-dev=1.6.9-r0 \
     ncurses \
     openssh \
     openssl \
