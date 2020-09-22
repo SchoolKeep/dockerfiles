@@ -35,7 +35,9 @@ workflows:
   build_and_push:
     jobs:
       - build_and_push:
-          context: docker-hub
+          context:
+            - docker-hub
+            - np-service-build
           filters:
             branches:
               only:
@@ -49,4 +51,6 @@ workflows:
               only: master
     jobs:
       - build_and_push:
-          context: docker-hub
+          context:
+            - docker-hub
+            - np-service-build
