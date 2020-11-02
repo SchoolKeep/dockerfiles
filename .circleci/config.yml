@@ -43,7 +43,7 @@ workflows:
   scheduled_build_and_push:
     triggers:
       - schedule:
-          cron: "0 6 * * *"
+          cron: "0 0 * * 0"
           filters:
             branches:
               only: master
