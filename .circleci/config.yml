@@ -44,6 +44,13 @@ workflows:
             branches:
               only:
                 - master
+      - build_and_push:
+          ruby_version: 2.7.2
+          context: docker-hub
+          filters:
+            branches:
+              only:
+                - master
   scheduled_build_and_push:
     triggers:
       - schedule:
@@ -54,4 +61,7 @@ workflows:
     jobs:
       - build_and_push:
           ruby_version: 2.5.8
+          context: docker-hub
+      - build_and_push:
+          ruby_version: 2.7.2
           context: docker-hub
