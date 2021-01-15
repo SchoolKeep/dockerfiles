@@ -19,7 +19,7 @@ jobs:
             docker build -f Dockerfile.dev \
               --build-arg BUILD_DATE="$(date '+%Y-%m-%dT%H:%M:%S')" \
               --build-arg REVISION_SHA=$CIRCLE_SHA1 \
-              --buil-arg ruby_version=<< parameters.ruby_version >> \
+              --build-arg ruby_version=<< parameters.ruby_version >> \
               -t "northpass/base-dev:<< parameters.ruby_version >>" \
               -t "northpass/base-dev:$CIRCLE_SHA1" \
               .
