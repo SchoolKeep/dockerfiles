@@ -1,4 +1,5 @@
-FROM cypress/included:6.3.0
+ARG CYPRESS_VERSION
+FROM cypress/included:$CYPRESS_VERSION
 
 ARG BUILD_DATE
 ARG REVISION_SHA
@@ -18,4 +19,4 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
-RUN yarn add @knapsack-pro/cypress jsdom axe-core cypress cypress-axe
+RUN yarn add @knapsack-pro/cypress jsdom axe-core cypress-axe cypress@$CYPRESS_VERSION

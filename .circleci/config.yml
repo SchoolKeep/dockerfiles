@@ -3,6 +3,9 @@ version: 2.1
 jobs:
   build_and_push:
     parameters:
+      cypress_version:
+        type: string
+        default: 6.3.0
       ruby_version:
         type: string
         default: 2.5.8
@@ -25,7 +28,9 @@ jobs:
             docker build -f Dockerfile.cypress \
               --build-arg BUILD_DATE="$(date '+%Y-%m-%dT%H:%M:%S')" \
               --build-arg REVISION_SHA=$CIRCLE_SHA1 \
+              --build-arg CYPRESS_VERSION=<< parameters.cypress_version >> \
               -t "northpass/base-cypress:latest" \
+              -t "northpass/base-cypress:<< parameters.cypress_version >>" \
               .
       - run:
           name: Push image to Docker Hub
