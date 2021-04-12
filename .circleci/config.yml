@@ -6,9 +6,6 @@ jobs:
       cypress_version:
         type: string
         default: 6.5.0
-      knapsack_version:
-        type: string
-        default: 4.2.1
       ruby_version:
         type: string
         default: 2.5.8
@@ -32,7 +29,6 @@ jobs:
               --build-arg BUILD_DATE="$(date '+%Y-%m-%dT%H:%M:%S')" \
               --build-arg REVISION_SHA=$CIRCLE_SHA1 \
               --build-arg CYPRESS_VERSION=<< parameters.cypress_version >> \
-              --build-arg KNAPSACK_VERSION=<< parameters.knapsack_version >> \
               -t "northpass/base-cypress:latest" \
               -t "northpass/base-cypress:<< parameters.cypress_version >>" \
               .
