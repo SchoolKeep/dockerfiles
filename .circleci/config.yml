@@ -9,6 +9,9 @@ jobs:
       ruby_version:
         type: string
         default: 2.5.8
+      node_version:
+        type: string
+        default: 14.17.0
     working_directory: ~/dockerfiles
     docker:
       - image: circleci/buildpack-deps:stretch
@@ -23,7 +26,8 @@ jobs:
               --build-arg BUILD_DATE="$(date '+%Y-%m-%dT%H:%M:%S')" \
               --build-arg REVISION_SHA=$CIRCLE_SHA1 \
               --build-arg ruby_version=<< parameters.ruby_version >> \
-              -t "northpass/base-dev:<< parameters.ruby_version >>" \
+              --build-arg node_version=<< parameters.node_version >> \
+              -t "northpass/base-dev:<< parameters.ruby_version >>-node-<< parameters.node_version >>" \
               .
             docker build -f Dockerfile.cypress \
               --build-arg BUILD_DATE="$(date '+%Y-%m-%dT%H:%M:%S')" \
