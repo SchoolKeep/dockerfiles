@@ -1,5 +1,6 @@
 ARG ruby_version
 ARG node_version
+FROM node:${node_version}-alpine3.11 as node_image
 FROM ruby:${ruby_version}-alpine3.11
 
 ARG BUILD_DATE
@@ -13,7 +14,7 @@ LABEL org.opencontainers.image.created=$BUILD_DATE \
   org.opencontainers.image.title="Northpass Development Base Image" \
   org.opencontainers.image.description="Base image used to run Northpass in development and test envs"
 
-COPY --from=node:${node_version}-alpine3.11 / /
+COPY --from=node_image / /
 
 RUN apk update && \
     apk upgrade && \
