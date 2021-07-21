@@ -27,7 +27,7 @@ jobs:
               --build-arg REVISION_SHA=$CIRCLE_SHA1 \
               --build-arg ruby_version=<< parameters.ruby_version >> \
               --build-arg node_version=<< parameters.node_version >> \
-              -t "northpass/base-dev:<< parameters.ruby_version >>-node-<< parameters.node_version >>" \
+              -t "northpass/base-dev:<< parameters.ruby_version >>-node-<< parameters.node_version >>-cypress-<< parameters.cypress_version >>" \
               .
             docker build -f Dockerfile.cypress \
               --build-arg BUILD_DATE="$(date '+%Y-%m-%dT%H:%M:%S')" \
