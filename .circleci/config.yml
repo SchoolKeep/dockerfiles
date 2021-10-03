@@ -67,6 +67,14 @@ workflows:
             branches:
               only:
                 - master
+      - build_and_push:
+          ruby_version: 2.7.4
+          alpine_version: "3.14"
+          context: docker-hub
+          filters:
+            branches:
+              only:
+                - master
   scheduled_build_and_push:
     triggers:
       - schedule:
@@ -82,4 +90,8 @@ workflows:
       - build_and_push:
           ruby_version: 2.7.2
           alpine_version: "3.11"
+          context: docker-hub
+      - build_and_push:
+          ruby_version: 2.7.4
+          alpine_version: "3.14"
           context: docker-hub
