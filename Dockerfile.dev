@@ -1,7 +1,8 @@
 ARG ruby_version
 ARG node_version
-FROM node:${node_version}-alpine3.11 as node_image
-FROM ruby:${ruby_version}-alpine3.11
+ARG alpine_version
+FROM node:${node_version}-alpine${alpine_version} as node_image
+FROM ruby:${ruby_version}-alpine${alpine_version}
 
 ARG BUILD_DATE
 ARG REVISION_SHA

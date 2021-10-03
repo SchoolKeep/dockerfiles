@@ -12,6 +12,9 @@ jobs:
       node_version:
         type: string
         default: 14.17.0
+      alpine_version:
+        type: string
+        default: 3.11
     working_directory: ~/dockerfiles
     docker:
       - image: circleci/buildpack-deps:stretch
@@ -28,6 +31,7 @@ jobs:
               --build-arg REVISION_SHA=$CIRCLE_SHA1 \
               --build-arg ruby_version=<< parameters.ruby_version >> \
               --build-arg node_version=<< parameters.node_version >> \
+              --build-arg alpine_version=<< parameters.alpine_version >> \
               -t "northpass/base-dev:<< parameters.ruby_version >>-node-<< parameters.node_version >>-cypress-<< parameters.cypress_version >>" \
               .
             docker build -f Dockerfile.cypress \
@@ -49,6 +53,7 @@ workflows:
     jobs:
       - build_and_push:
           ruby_version: 2.5.8
+          alpine_version: 3.11
           context: docker-hub
           filters:
             branches:
@@ -56,6 +61,7 @@ workflows:
                 - master
       - build_and_push:
           ruby_version: 2.7.2
+          alpine_version: 3.11
           context: docker-hub
           filters:
             branches:
@@ -71,7 +77,9 @@ workflows:
     jobs:
       - build_and_push:
           ruby_version: 2.5.8
+          alpine_version: 3.11
           context: docker-hub
       - build_and_push:
           ruby_version: 2.7.2
+          alpine_version: 3.11
           context: docker-hub
