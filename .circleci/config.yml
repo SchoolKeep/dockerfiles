@@ -14,7 +14,7 @@ jobs:
         default: 14.17.0
       alpine_version:
         type: string
-        default: 3.11
+        default: ""3.11""
     working_directory: ~/dockerfiles
     docker:
       - image: circleci/buildpack-deps:stretch
@@ -53,7 +53,7 @@ workflows:
     jobs:
       - build_and_push:
           ruby_version: 2.5.8
-          alpine_version: 3.11
+          alpine_version: "3.11"
           context: docker-hub
           filters:
             branches:
@@ -61,7 +61,7 @@ workflows:
                 - master
       - build_and_push:
           ruby_version: 2.7.2
-          alpine_version: 3.11
+          alpine_version: "3.11"
           context: docker-hub
           filters:
             branches:
@@ -77,9 +77,9 @@ workflows:
     jobs:
       - build_and_push:
           ruby_version: 2.5.8
-          alpine_version: 3.11
+          alpine_version: "3.11"
           context: docker-hub
       - build_and_push:
           ruby_version: 2.7.2
-          alpine_version: 3.11
+          alpine_version: "3.11"
           context: docker-hub
