@@ -6,15 +6,6 @@ jobs:
       cypress_version:
         type: string
         default: 9.5.0
-      ruby_version:
-        type: string
-        default: 2.5.8
-      node_version:
-        type: string
-        default: 14.17.0
-      alpine_version:
-        type: string
-        default: "3.11"
     working_directory: ~/dockerfiles
     docker:
       - image: circleci/buildpack-deps:stretch
@@ -26,14 +17,6 @@ jobs:
       - run:
           name: Build image
           command: |
-            docker build -f Dockerfile.dev \
-              --build-arg BUILD_DATE="$(date '+%Y-%m-%dT%H:%M:%S')" \
-              --build-arg REVISION_SHA=$CIRCLE_SHA1 \
-              --build-arg ruby_version=<< parameters.ruby_version >> \
-              --build-arg node_version=<< parameters.node_version >> \
-              --build-arg alpine_version=<< parameters.alpine_version >> \
-              -t "northpass/base-dev:<< parameters.ruby_version >>-node-<< parameters.node_version >>-cypress-<< parameters.cypress_version >>" \
-              .
             docker build -f Dockerfile.cypress \
               --build-arg BUILD_DATE="$(date '+%Y-%m-%dT%H:%M:%S')" \
               --build-arg REVISION_SHA=$CIRCLE_SHA1 \
@@ -45,31 +28,12 @@ jobs:
           name: Push image to Docker Hub
           command: |
             echo "$DOCKER_HUB_PASS" | docker login --username "$DOCKER_HUB_LOGIN" --password-stdin
-            docker push northpass/base-dev
             docker push northpass/base-cypress
 
 workflows:
   build_and_push:
     jobs:
       - build_and_push:
-          ruby_version: 2.5.8
-          alpine_version: "3.11"
-          context: docker-hub
-          filters:
-            branches:
-              only:
-                - master
-      - build_and_push:
-          ruby_version: 2.7.2
-          alpine_version: "3.11"
-          context: docker-hub
-          filters:
-            branches:
-              only:
-                - master
-      - build_and_push:
-          ruby_version: 2.7.4
-          alpine_version: "3.14"
           context: docker-hub
           filters:
             branches:
@@ -84,14 +48,4 @@ workflows:
               only: master
     jobs:
       - build_and_push:
-          ruby_version: 2.5.8
-          alpine_version: "3.11"
-          context: docker-hub
-      - build_and_push:
-          ruby_version: 2.7.2
-          alpine_version: "3.11"
-          context: docker-hub
-      - build_and_push:
-          ruby_version: 2.7.4
-          alpine_version: "3.14"
           context: docker-hub
