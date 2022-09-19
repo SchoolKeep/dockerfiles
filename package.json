@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "@knapsack-pro/cypress": "^4.6.0",
+    "@testing-library/cypress": "^8.0.3",
+    "axe-core": "^4.4.3",
+    "cypress": "9.5.4",
+    "cypress-axe": "^1.0.0",
+    "cypress-file-upload": "^5.0.8",
+    "cypress-iframe": "^1.0.1",
+    "cypress-mailhog": "^1.6.0",
+    "cypress-wait-until": "^1.7.2",
+    "dayjs": "^1.11.5",
+    "jsdom": "^20.0.0"
+  },
+  "resolutions": {
+    "@testing-library/dom": "8.17.1"
+  }
+}
