@@ -20,4 +20,4 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
-RUN yarn add dayjs @knapsack-pro/cypress@^4.6.0 cypress-wait-until jsdom axe-core cypress-iframe cypress-axe cypress-mailhog cypress-file-upload @testing-library/cypress cypress@$CYPRESS_VERSION
+RUN yarn add @testing-library/dom@8.17.1 dayjs @knapsack-pro/cypress@^4.6.0 cypress-wait-until jsdom axe-core cypress-iframe cypress-axe cypress-mailhog cypress-file-upload @testing-library/cypress cypress@$CYPRESS_VERSION
